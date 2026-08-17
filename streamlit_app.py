@@ -6,7 +6,7 @@ import streamlit as st
 st.title("Streamlit Google Drive Parquet Streamer")
 
 # Reconstructs Google Drive link for direct download
-FILE_ID = "Y112VRcpdgb2HxHwH565b5rsdOUEXjJR69"
+FILE_ID = '1vRVrvN3wzdSpbD6chKJi1TthZmZY8KpF'
 @st.cache_data
 def load_gdrive_parquet(file_id: str) -> pd.DataFrame:
     url = f"https://drive.google.com/uc?id={file_id}"

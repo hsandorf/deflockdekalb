@@ -5,13 +5,17 @@ import streamlit as st
 
 st.title("Streamlit Google Drive Parquet Streamer")
 
-# Reconstructs Google Drive link for direct download
-FILE_ID = '1vRVrvN3wzdSpbD6chKJi1TthZmZY8KpF'
-@st.cache_data
-def load_gdrive_parquet(file_id: str) -> pd.DataFrame:
-    url = f"https://drive.google.com/uc?id={file_id}"
-    output = "data.parquet"
-    gdown.download(url, output, quiet=True)
-    return pd.read_parquet(output)
+#st.title("Streamlit Google Drive Parquet Streamer")
 
-df = load_gdrive_parquet(FILE_ID)
+import pandas as pd
+import streamlit as st
+
+DATA_URL = "https://www.dropbox.com/scl/fi/oqk2y6nnp6vcxrf67hwy6/1_25-5_26-Combined-Network.parquet?rlkey=xul1b4j7hnjhipm6fv6ah3snx&st=1jg7kjqn&dl=1"
+
+#@st.cache_data
+def load_parquet(url: str) -> pd.DataFrame:
+    return pd.read_parquet(url)
+
+df = load_parquet(DATA_URL)
+
+print(df.head())

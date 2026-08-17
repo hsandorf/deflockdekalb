@@ -15,5 +15,3 @@ def load_parquet(url: str) -> pd.DataFrame:
     return pd.read_parquet(url)
 
 df = load_parquet(DATA_URL)
-
-print(df.head())

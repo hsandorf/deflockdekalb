@@ -1,5 +1,6 @@
 import gdown
 import pandas as pd
+import plotly.express as px
 import streamlit as st
 
 st.title("Streamlit Google Drive Parquet Streamer")

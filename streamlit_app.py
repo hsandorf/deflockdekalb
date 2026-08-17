@@ -5,7 +5,6 @@ import streamlit as st
 
 st.title("Streamlit Google Drive Parquet Streamer")
 
-#st.title("Streamlit Google Drive Parquet Streamer")
 
 import pandas as pd
 import streamlit as st

@@ -4,8 +4,8 @@ st.set_page_config(page_title="DeKalb ALPR Data Search", page_icon="👮", layou
 
 pages = [
     st.Page("app_pages/overview.py", title="About Automated License Plate Readers (Flock Cameras)", icon="❓"),
-    st.Page("app_pages/dekalb_pd_audit.py", title="DeKalb PD Flock ALPR Use", icon="🚓"),
-    st.Page("app_pages/officer_lookup.py", title="Who Else is Searching DeKalb's Data?", icon="🔍"),
+    st.Page("app_pages/Dekalb_PD_Audit.py", title="DeKalb PD Flock ALPR Use", icon="🚓"),
+    st.Page("app_pages/Network_Audit.py", title="Who Else is Searching DeKalb's Data?", icon="🔍"),
 ]
 
 pg = st.navigation(pages)

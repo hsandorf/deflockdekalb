@@ -3,7 +3,7 @@ import streamlit as st
 st.set_page_config(page_title="DeKalb ALPR Data Search", page_icon="👮", layout="wide")
 
 pages = [
-    st.Page("app_pages/overview.py", title="About Automated License Plate Readers (Flock Cameras)", icon="❓"),
+    st.Page("app_pages/about_flock.py", title="About Automated License Plate Readers (Flock Cameras)", icon="❓"),
     st.Page("app_pages/Dekalb_PD_Audit.py", title="DeKalb PD Flock ALPR Use", icon="🚓"),
     st.Page("app_pages/Network_Audit.py", title="Who Else is Searching DeKalb's Data?", icon="🔍"),
 ]

@@ -7,8 +7,6 @@ import matplotlib.ticker as mticker
 
 
 
-st.set_page_config(page_title="Who's Searching DeKalb's Data?", page_icon="🤔", layout="wide")
-
 st.markdown(
     "<h1 style='text-align: center;'>Who's Searching DeKalb's Data?</h1>",
     unsafe_allow_html=True

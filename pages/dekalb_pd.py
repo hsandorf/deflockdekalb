@@ -20,7 +20,7 @@ st.write(
       See the charts below and make your own decisions on how DeKalb has been using YOUR ALPR data. A few highlights:  
       -DeKalb County PD conducted over 158,000 searches in the past 18 months, 27% using a Mobile device  
       -With each search taking roughly a minute, likely longer, that means 158,000 minutes of searches ALPR images. Over an entire year of working days for one officer.
-      -According to the Federal Crime Data Explorer, DeKalb County has not seen a meaningful increase in crime solve rates, even vehiclular crimes https://cde.ucr.cjis.gov/LATEST/webapp/#/pages/home """
+      -According to the Federal Crime Data Explorer, DeKalb County has not seen a meaningful increase in crime solve rates, even vehicular crimes https://cde.ucr.cjis.gov/LATEST/webapp/#/pages/home """
   )
 
 DATA_URL = "https://www.dropbox.com/scl/fi/3ci7grragut6ortlh4q34/1_25-5_26-Combined_PD-Audit_v2.csv?rlkey=maujt3ko3la40ekx7pn3j0zj0&st=7n4qswb6&dl=1"

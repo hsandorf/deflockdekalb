@@ -5,9 +5,6 @@ import streamlit as st
 import matplotlib.pyplot as plt
 import matplotlib.ticker as mticker
 
-
-st.set_page_config(page_title="DeKalb PD Flock ALPR Use", page_icon="🚨", layout="wide")
-
 st.markdown(
     "<h1 style='text-align: center;'Is the DeKalb Police Department Using Flock Responsibly?</h1>",
     unsafe_allow_html=True

@@ -89,7 +89,7 @@ if filtered.empty:
 else:
     
     fig = px.bar(
-        filtered['Org Name'].value_counts().reset_index(),
+        filtered['Org Name'].value_counts().head(20).reset_index(),
         x='count', y='Org Name',
         orientation='h',
         text='count')

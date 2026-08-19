@@ -9,4 +9,8 @@ pages = [
 ]
 
 pg = st.navigation(pages)
+
+with st.sidebar:
+    org_types = st.multiselect('Filter by Org Type', options=df['Org Type'].unique(), default=df['Org Type'].unique())
+    
 pg.run()

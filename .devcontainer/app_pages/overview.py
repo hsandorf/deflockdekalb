@@ -5,8 +5,6 @@ import streamlit as st
 import matplotlib.pyplot as plt
 import matplotlib.ticker as mticker
 
-
-st.set_page_config(page_title="Welcome to Deflock DeKalb!", page_icon="❓", layout="wide")
 st.title("Welcome to Deflock DeKalb!")
 st.write("Use the sidebar navigation to switch between different pages.")
 

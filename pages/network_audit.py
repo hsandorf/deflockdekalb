@@ -140,7 +140,7 @@ st.text('Reasons were grouped based on the presence of case #s or keywords in th
 
 df['Search Date'] = pd.to_datetime(df['Search Date'])
 
-daily_counts = df.groupby('Search Date')['Count'].sum()
+daily_counts = df.groupby('Search Date')['Count'].sum().reset_index()
 
 fig = px.line(
     daily_counts,

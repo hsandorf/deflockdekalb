@@ -36,6 +36,14 @@ df = load_csv(DATA_URL)
 
 print(df.head())
 
+
+df['Search Time'] = pd.to_datetime(df['Search Time'], utc=True).dt.tz_convert('America/New_York')
+df['Search Time'] = (
+    pd.to_datetime(df['Search Time'], utc=True)
+    .dt.tz_convert('America/New_York')
+    .dt.tz_localize(None)
+)
+
 df['Hour'] = df['Search Time'].dt.hour
 
 df['Reason Category'] = df['Reason Category'].replace('Unknown','Other / Uncategorized')
@@ -104,12 +112,6 @@ fig.update_traces(texttemplate='%{text:,}', textposition='outside')
 fig.update_layout(height=600, yaxis={'categoryorder': 'total ascending'})
 st.plotly_chart(fig, use_container_width=True)
 
-df['Search Time'] = pd.to_datetime(df['Search Time'], utc=True).dt.tz_convert('America/New_York')
-df['Search Time'] = (
-    pd.to_datetime(df['Search Time'], utc=True)
-    .dt.tz_convert('America/New_York')
-    .dt.tz_localize(None)
-)
 
 
 

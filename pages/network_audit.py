@@ -113,14 +113,14 @@ else:
 
 
 fig = px.bar(
-    df['Category'].value_counts().reset_index(),
+    filtered['Category'].value_counts().reset_index(),
     x='Category', y='count',
     orientation='v',
     text='count')
 
 fig.update_traces(
     marker=dict(
-        color=df['Category'].value_counts().values,
+        color=filtered['Category'].value_counts().values,
         colorscale='Blues'
     )
 )

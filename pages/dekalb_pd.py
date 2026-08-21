@@ -180,9 +180,9 @@ grouped = grouped[grouped['Name'].isin(top_officers)]
 
 fig = px.bar(
     grouped,
-    x='count',
-    y='Reason Category',
-    color='Name',
+    x='Name',
+    y='count',
+    color='Reason Category',
     orientation='v',
     text='count',
     barmode='stack'

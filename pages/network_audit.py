@@ -37,7 +37,7 @@ def load_parquet(path: str) -> pd.DataFrame:
 df = load_parquet(DATA_URL)
 print(df.head())
 
-df = df[df['Org Name'].str.contains('DeKalb')]
+df = df[~df['Org Name'].str.contains('DeKalb')]
 
 state_counts = df.groupby('State').agg(
     Searches=('State', 'count'),

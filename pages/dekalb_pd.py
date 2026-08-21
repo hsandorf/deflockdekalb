@@ -135,6 +135,35 @@ fig.update_layout(
     xaxis=dict(tickmode='linear', dtick=2, range=[0, 23])
 )
 
+
+
+
+search_types = filtered[
+    (filtered['Search Type'] != 'searchSummary - Mobile') &
+    (filtered['Search Type'] != 'multiGeo') &
+    (filtered['Search Type'] != 'convoy')
+]
+
+search_type_counts = search_types['Search Type'].value_counts().reset_index()
+search_type_counts.columns = ['Search Type', 'count']
+
+
+fig = px.pie(
+    search_type_counts,
+    names='Search Type',
+    values='count',
+    title='Searches by Search Type'
+)
+
+fig.update_traces(textinfo='percent+label', textfont_size=14)
+fig.update_layout(
+    font=dict(size=14),
+    title=dict(font=dict(size=24)),
+    height=600
+)
+
+st.plotly_chart(fig, use_container_width=True)
+
 st.plotly_chart(fig, use_container_width=True)
 
 
@@ -147,6 +176,7 @@ grouped = after_hours.groupby(['Name', 'Reason Category']).size().reset_index(na
 
 top_officers = after_hours['Name'].value_counts().head(20).index
 grouped = grouped[grouped['Name'].isin(top_officers)]
+
 
 fig = px.bar(
     grouped,
@@ -171,31 +201,7 @@ fig.update_layout(
 st.plotly_chart(fig, use_container_width=True)
 
 
-search_types = df[
-    (df['Search Type'] != 'searchSummary - Mobile') &
-    (df['Search Type'] != 'multiGeo') &
-    (df['Search Type'] != 'convoy')
-]
 
-search_type_counts = search_types['Search Type'].value_counts().reset_index()
-search_type_counts.columns = ['Search Type', 'count']
-
-
-fig = px.pie(
-    search_type_counts,
-    names='Search Type',
-    values='count',
-    title='Searches by Search Type'
-)
-
-fig.update_traces(textinfo='percent+label', textfont_size=14)
-fig.update_layout(
-    font=dict(size=14),
-    title=dict(font=dict(size=24)),
-    height=600
-)
-
-st.plotly_chart(fig, use_container_width=True)
 
 
 st.write("Want to dive in deeper? Download CSVs at https://www.dropbox.com/scl/fi/3ci7grragut6ortlh4q34/1_25-5_26-Combined_PD-Audit_v2.csv?rlkey=maujt3ko3la40ekx7pn3j0zj0&st=5umlwepl&dl=0")

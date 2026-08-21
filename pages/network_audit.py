@@ -28,7 +28,7 @@ See below to explore Flock data requests from DeKalb cameras yourself!"""
 )
 
 
-DATA_URL = "https://www.dropbox.com/scl/fi/1zirc49rz4uan2e1213sj/1_25-5_26-Combined-Network.parquet?rlkey=ztbpmc82khf7rwjnj4kpsusca&st=10annuf2&dl=1"
+DATA_URL = "https://www.dropbox.com/scl/fi/tvzcwws2o0l4prnvjo8r9/1_25-5_26-Combined-Network.parquet?rlkey=7hmqkovb21r3xcgqswb6ea8r8&st=sqezzl0r&dl=1"
 
 @st.cache_data
 def load_parquet(path: str) -> pd.DataFrame:
@@ -37,6 +37,7 @@ def load_parquet(path: str) -> pd.DataFrame:
 df = load_parquet(DATA_URL)
 print(df.head())
 
+df = df[~df['Org Name'] != 'DeKalb County GA PD']
 
 state_counts = df.groupby('State').agg(
     Searches=('State', 'count'),

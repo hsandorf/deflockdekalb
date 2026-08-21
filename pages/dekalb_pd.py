@@ -183,7 +183,7 @@ fig = px.bar(
     x='Name',
     y='count',
     color='Reason Category',
-    orientation='v',
+    orientation='h',
     text='count',
     barmode='stack'
 )

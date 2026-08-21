@@ -137,6 +137,8 @@ fig.update_layout(
 
 
 
+st.plotly_chart(fig, use_container_width=True)
+
 
 search_types = filtered[
     (filtered['Search Type'] != 'searchSummary - Mobile') &
@@ -161,8 +163,6 @@ fig.update_layout(
     title=dict(font=dict(size=24)),
     height=600
 )
-
-st.plotly_chart(fig, use_container_width=True)
 
 st.plotly_chart(fig, use_container_width=True)
 

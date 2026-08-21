@@ -181,9 +181,9 @@ grouped = grouped[grouped['Name'].isin(top_officers)]
 fig = px.bar(
     grouped,
     x='count',
-    y='Name',
-    color='Reason Category',
-    orientation='h',
+    y='Reason Category',
+    color='Name',
+    orientation='v',
     text='count',
     barmode='stack'
 )
@@ -193,8 +193,8 @@ fig.update_layout(
     font=dict(size=16, color="#1a1a1a"),
     title=dict(text='Searches Between 10 PM - 4 AM by Officer and Reason', font=dict(size=24)),
     height=600,
-    xaxis_title='Number of Searches',
-    yaxis_title='Officer',
+    xaxis_title='Officer',
+    yaxis_title='Number of Searches',
     xaxis={'categoryorder': 'total descending'}
 )
 

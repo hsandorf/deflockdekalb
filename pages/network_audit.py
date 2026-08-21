@@ -134,11 +134,12 @@ fig.update_traces(texttemplate='%{text:,}', textposition='outside')
 fig.update_layout(height=600, yaxis={'categoryorder': 'total ascending'})
 st.plotly_chart(fig, use_container_width=True)
 
+df['Search Date'] = pd.to_datetime(df['Search Date'])
 
 st.text('Reasons were grouped based on the presence of case #s or keywords in the "Reason" field completed by the Flock user.')
 
 
-daily_counts = filtered.groupby('Search Date').size().reset_index(name='count')
+daily_counts = df.groupby('Search Date').size().reset_index(name='count')
 
 daily_counts = daily_counts[daily_counts['Search Date'] > '2025-09-01']
 

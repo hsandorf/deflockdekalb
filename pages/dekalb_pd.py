@@ -36,6 +36,8 @@ df = load_csv(DATA_URL)
 
 print(df.head())
 
+df['Hour'] = df['Search Time'].dt.hour
+
 df['Reason Category'] = df['Reason Category'].replace('Unknown','Other / Uncategorized')
 df['Reason Category'] = df['Reason Category'].replace('nan','Other / Uncategorized')
 
@@ -81,14 +83,14 @@ else:
 
 
 fig = px.bar(
-    df['Reason Category'].value_counts().reset_index(),
+    filtered['Reason Category'].value_counts().reset_index(),
     x='Reason Category', y='count',
     orientation='v',
     text='count')
 
 fig.update_traces(
     marker=dict(
-        color=df['Reason Category'].value_counts().values,
+        color=filtered['Reason Category'].value_counts().values,
         colorscale='Blues'
     )
 )
@@ -109,9 +111,9 @@ df['Search Time'] = (
     .dt.tz_localize(None)
 )
 
-df['Hour'] = df['Search Time'].dt.hour
 
-hourly_counts = df['Hour'].value_counts().sort_index().reindex(range(24), fill_value=0)
+
+hourly_counts = filtered['Hour'].value_counts().sort_index().reindex(range(24), fill_value=0)
 hourly_df = hourly_counts.reset_index()
 hourly_df.columns = ['Hour', 'count']
 

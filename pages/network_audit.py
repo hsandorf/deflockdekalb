@@ -143,7 +143,7 @@ st.text('Reasons were grouped based on the presence of case #s or keywords in th
 
 
 fig = px.line(
-    daily_counts,
+    df,
     x='Search Date',
     y='Count',
     markers=True  # adds dots at each data point, nice for sparser data

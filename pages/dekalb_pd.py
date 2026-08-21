@@ -26,7 +26,7 @@ st.write(
       -According to the Federal Crime Data Explorer, DeKalb County has not seen a meaningful increase in crime solve rates, even vehiclular crimes https://cde.ucr.cjis.gov/LATEST/webapp/#/pages/home """
   )
 
-DATA_URL = "https://www.dropbox.com/scl/fi/3ci7grragut6ortlh4q34/1_25-5_26-Combined_PD-Audit_v2.csv?rlkey=maujt3ko3la40ekx7pn3j0zj0&st=4a2zlkpf&dl=1"
+DATA_URL = "deflockdekalb/1_25_5_26 Combined Network.parquet"
 
 @st.cache_data
 def load_csv(url: str) -> pd.DataFrame:

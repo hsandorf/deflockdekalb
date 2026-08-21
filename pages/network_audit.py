@@ -138,26 +138,6 @@ st.plotly_chart(fig, use_container_width=True)
 
 st.text('Reasons were grouped based on the presence of case #s or keywords in the "Reason" field completed by the Flock user.')
 
-df['Search Date'] = pd.to_datetime(df['Search Date'])
-
-daily_counts = df.groupby('Search Date')['Count'].sum().reset_index()
-
-fig = px.line(
-    daily_counts,
-    x='Search Date',
-    y='Count',
-    markers=True  # adds dots at each data point, nice for sparser data
-)
-
-fig.update_layout(
-    height=500,
-    font=dict(size=14),
-    title=dict(text='Searches Over Time', font=dict(size=24)),
-    xaxis_title='Date',
-    yaxis_title='Number of Searches'
-)
-
-st.plotly_chart(fig, use_container_width=True)
 
 
 st.write("Want to dive in deeper? Download CSVs at https://www.dropbox.com/scl/fi/znyj5de1fty5hxsdm477w/5_1_2026-5_31_2026-DeKalb_County_GA_PD-Network-Audit.zip?rlkey=tjajzkn64djv4loibksr1tofs&st=eftftyll&dl=0")

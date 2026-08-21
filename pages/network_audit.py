@@ -28,7 +28,7 @@ See below to explore Flock data requests from DeKalb cameras yourself!"""
 )
 
 
-DATA_URL = "https://www.dropbox.com/scl/fi/jjlrui9bvyv0w5kumtc5h/1_25-5_26-Combined-Network_filteredv2.parquet?rlkey=3dm7dz8uofltva27m6ans7thh&st=ng9us8dz&dl=1"
+DATA_URL = "https://www.dropbox.com/scl/fi/jjlrui9bvyv0w5kumtc5h/https://www.dropbox.com/scl/fi/1zirc49rz4uan2e1213sj/1_25-5_26-Combined-Network.parquet?rlkey=ztbpmc82khf7rwjnj4kpsusca&st=w30vsqjd&dl=1"
 
 @st.cache_data
 def load_parquet(url: str) -> pd.DataFrame:

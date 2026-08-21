@@ -28,13 +28,13 @@ See below to explore Flock data requests from DeKalb cameras yourself!"""
 )
 
 
-DATA_URL = "https://github.com/hsandorf/deflockdekalb/releases/download/deflockdekalb/1_25-5_26.Combined.Network.parquet"
+DATA_URL = "1_25_5_26 Combined Network.parquet"
+
 @st.cache_data
-def load_parquet(url: str) -> pd.DataFrame:
-    return pd.read_parquet(url)
+def load_parquet(path: str) -> pd.DataFrame:
+    return pd.read_parquet(path)
 
 df = load_parquet(DATA_URL)
-
 print(df.head())
 
 

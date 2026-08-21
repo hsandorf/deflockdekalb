@@ -26,18 +26,18 @@ st.write(
       -According to the Federal Crime Data Explorer, DeKalb County has not seen a meaningful increase in crime solve rates, even vehiclular crimes https://cde.ucr.cjis.gov/LATEST/webapp/#/pages/home """
   )
 
-DATA_URL = "deflockdekalb/1_25_5_26 Combined Network.parquet"
+DATA_URL = "1_25_5_26 Combined Network.parquet"
 
 @st.cache_data
-def load_csv(url: str) -> pd.DataFrame:
-    return pd.read_csv(url)
+def load_parquet(path: str) -> pd.DataFrame:
+    return pd.read_parquet(path)
 
-df = load_csv(DATA_URL)
-
+df = load_parquet(DATA_URL)
 print(df.head())
 
-df['Reason Category'] = df['Reason Category'].replace('Unknown','Other / Uncategorized')
-df['Reason Category'] = df['Reason Category'].replace('nan','Other / Uncategorized')
+
+df['Category'] = df['Category'].replace('Unknown','Other / Uncategorized')
+df['Category'] = df['Category'].replace('nan','Other / Uncategorized')
 
 
 name = st.multiselect(
@@ -81,20 +81,20 @@ else:
 
 
 fig = px.bar(
-    df['Reason Category'].value_counts().reset_index(),
-    x='Reason Category', y='count',
+    df['Category'].value_counts().reset_index(),
+    x='Category', y='count',
     orientation='v',
     text='count')
 
 fig.update_traces(
     marker=dict(
-        color=df['Reason Category'].value_counts().values,
+        color=df['Category'].value_counts().values,
         colorscale='Blues'
     )
 )
 fig.update_layout(
     font=dict(size=16, color="#1a1a1a"),
-    title=dict(text='Searches by Reason Category', font=dict(size=24)),
+    title=dict(text='Searches by Category', font=dict(size=24)),
     height=600,
     yaxis={'categoryorder': 'total ascending'}
 )
@@ -137,8 +137,8 @@ st.plotly_chart(fig, use_container_width=True)
 after_hours_mask = (df['Hour'] < 4) | (df['Hour'] >= 22)
 after_hours = df[after_hours_mask]
 
-# Count by Officer and Reason Category together
-grouped = after_hours.groupby(['Name', 'Reason Category']).size().reset_index(name='count')
+# Count by Officer and Category together
+grouped = after_hours.groupby(['Name', 'Category']).size().reset_index(name='count')
 
 
 top_officers = after_hours['Name'].value_counts().head(20).index
@@ -148,7 +148,7 @@ fig = px.bar(
     grouped,
     x='Name',
     y='count',
-    color='Reason Category',
+    color='Category',
     orientation='v',
     text='count',
     barmode='stack'

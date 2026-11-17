@@ -28,21 +28,28 @@ See below to explore Flock data requests from DeKalb cameras yourself!"""
 )
 
 
-DATA_URL = "https://www.dropbox.com/scl/fi/tvzcwws2o0l4prnvjo8r9/1_25-5_26-Combined-Network.parquet?rlkey=7hmqkovb21r3xcgqswb6ea8r8&st=sqezzl0r&dl=1"
+import pandas as pd
 
 @st.cache_data
-def load_parquet(path: str) -> pd.DataFrame:
-    return pd.read_parquet(path)
+def load_data():
+    return pd.read_parquet("1_25-5_26 Combined Network.parquet")
 
-df = load_parquet(DATA_URL)
-print(df.head())
+df = load_data()
 
-df = df[~df['Org Name'].str.contains('DeKalb')]
+org_options = sorted(df["Org Type"].dropna().unique())
+state_options = sorted(df["State"].dropna().unique())
 
-state_counts = df.groupby('State').agg(
-    Searches=('State', 'count'),
-    Orgs=('Org Name', lambda x: ', '.join(sorted(x.unique())[:10]))  # cap list length so hover isn't huge
-).reset_index()
+# ---- State map ----
+state_counts = (
+    df[df["State"].notna()]
+    .groupby("State")
+    .agg(
+        Searches=("searches", "sum"),
+        Orgs=("Org Name", lambda x: ", ".join(sorted(x.unique())[:10])),
+    )
+    .reset_index()
+    .sort_values("Searches", ascending=False)
+)
 
 fig = px.choropleth(
     state_counts,

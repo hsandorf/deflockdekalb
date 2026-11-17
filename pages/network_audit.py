@@ -32,7 +32,7 @@ import pandas as pd
 
 @st.cache_data
 def load_data():
-    return pd.read_parquet("1_25-5_26 Combined Network.parquet")
+    return pd.read_parquet("agg.parquet")
 
 df = load_data()
 

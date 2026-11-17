@@ -1,6 +1,8 @@
-pandas
-matplotlib
-pyarrow
-seaborn
-plotly
+
 streamlit
+pandas
+plotly
+duckdb
+requests
+pyarrow
+

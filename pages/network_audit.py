@@ -44,22 +44,22 @@ state_counts = (
     df[df["State"].notna()]
     .groupby("State")
     .agg(
-        Searches=("searches", "sum"),
+        Searches=("Count", "sum"),
         Orgs=("Org Name", lambda x: ", ".join(sorted(x.unique())[:10])),
     )
     .reset_index()
-    .sort_values("Searches", ascending=False)
+    .sort_values("Count", ascending=False)
 )
 
 fig = px.choropleth(
     state_counts,
     locations='State',
     locationmode='USA-states',
-    color='Searches',
+    color='Count',
     scope='usa',
     color_continuous_scale='Blues',
     hover_name='State',
-    hover_data={'Searches': True, 'Orgs': True, 'State': False,'Searches': ':,'}
+    hover_data={'Count': True, 'Orgs': True, 'State': False,'Count': ':,'}
 )
 
 fig.update_layout(

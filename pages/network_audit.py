@@ -48,18 +48,18 @@ state_counts = (
         Orgs=("Org Name", lambda x: ", ".join(sorted(x.unique())[:10])),
     )
     .reset_index()
-    .sort_values("Count", ascending=False)
+    .sort_values("Searches", ascending=False)
 )
 
 fig = px.choropleth(
     state_counts,
     locations='State',
     locationmode='USA-states',
-    color='Count',
+    color='Searches',
     scope='usa',
     color_continuous_scale='Blues',
     hover_name='State',
-    hover_data={'Count': True, 'Orgs': True, 'State': False,'Count': ':,'}
+    hover_data={'Searches': True, 'Orgs': True, 'State': False,'Searches': ':,'}
 )
 
 fig.update_layout(

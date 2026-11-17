@@ -30,32 +30,7 @@ https://www.jalopnik.com/2238664/atlanta-flock-5000-flock-cameras-fbi-crime-data
 https://www.muckrock.com/foi/ - See what FOIA requests have already been submitted for your area and download data!
 """)
 
-st.write("""
 
-Something else you want to see in this data? Have ideas? Want to get in touch? Leave a comment!
-
-
-""")
-
-# 1. Initialize session state to hold comments
-if "comment_list" not in st.session_state:
-    st.session_state.comment_list = []
-
-# 2. Create the comment submission form
-with st.form("comment_form", clear_on_submit=True):
-    user_comment = st.text_area("Leave a comment:", placeholder="Write your thoughts here...")
-    submit_button = st.form_submit_button("Submit Comment")
-
-    # 3. Handle submission logic
-    if submit_button and user_comment.strip():
-        # Insert newest comment at the beginning of the list
-        st.session_state.comment_list.insert(0, user_comment)
-        st.success("Comment submitted!")
-
-# 4. Display the comments
-st.write("### Past Comments")
-if st.session_state.comment_list:
-    for i, comment in enumerate(st.session_state.comment_list):
         st.info(comment)
 else:
     st.caption("No comments yet. Be the first to leave one!")

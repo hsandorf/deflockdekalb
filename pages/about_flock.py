@@ -30,7 +30,3 @@ https://www.jalopnik.com/2238664/atlanta-flock-5000-flock-cameras-fbi-crime-data
 https://www.muckrock.com/foi/ - See what FOIA requests have already been submitted for your area and download data!
 """)
 
-
-        st.info(comment)
-else:
-    st.caption("No comments yet. Be the first to leave one!")
